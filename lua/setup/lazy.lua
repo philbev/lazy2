@@ -1,0 +1,58 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	--'wbthomason/packer.nvim',
+	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+	'kyazdani42/nvim-web-devicons',
+	'neovim/nvim-lspconfig',
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-buffer',
+	'hrsh7th/cmp-path',
+	'hrsh7th/cmp-cmdline',
+	'hrsh7th/nvim-cmp',
+	'L3MON4D3/LuaSnip',
+	'saadparwaiz1/cmp_luasnip',
+	'onsails/lspkind.nvim',
+	'uga-rosa/cmp-dictionary',
+	'hrsh7th/cmp-nvim-lua',
+	'norcalli/nvim-colorizer.lua',
+	'windwp/nvim-autopairs',
+	'p00f/nvim-ts-rainbow',
+	'lukas-reineke/indent-blankline.nvim',
+	'nvim-telescope/telescope.nvim',
+	'nvim-lua/plenary.nvim',
+	'nvim-lualine/lualine.nvim',
+	'Mofiqul/dracula.nvim',
+	'lifepillar/vim-gruvbox8',
+	'navarasu/onedark.nvim',
+	'RRethy/nvim-base16',
+	{ 'nvim-neo-tree/neo-tree.nvim', branch = 'v2.x' },
+	'MunifTanjim/nui.nvim',
+	'folke/which-key.nvim',
+	'akinsho/toggleterm.nvim',
+	'tpope/vim-surround',
+	'rcarriga/nvim-notify',
+	'rafamadriz/friendly-snippets',
+	'williamboman/mason.nvim',
+	'williamboman/mason-lspconfig.nvim',
+	'lewis6991/gitsigns.nvim',
+	'tpope/vim-characterize',
+	'ethanholz/nvim-lastplace',
+	'folke/neodev.nvim',
+    'j-hui/fidget.nvim',
+    'luisiacc/gruvbox-baby',
+    'sainnhe/gruvbox-material',
+    ({ "mtoohey31/cmp-fish", ft = "fish" }),
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+})
